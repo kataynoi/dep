@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'xxx',
+	'hostname' => '203.157.185.28',
 	'username' => 'root',
-	'password' => 'xxx',
-	'database' => 'comsurvey',
+	'password' => '',
+	'database' => 'dep_test',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

@@ -1,3 +1,4 @@
+
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -23,7 +24,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://'.$_SERVER['SERVER_NAME'].'/comsurvey-master';
+$config['base_url'] = 'http://'.$_SERVER['SERVER_NAME'].' /dep';
+$config['site_name'] = 'กลุ่มงานพัฒนาคุณภาพและรูปแบบบริการ';
+$config['boss_id'] = 4;
+$config['group_id'] = 4;
+$config['boss_name'] = 'นางพัชรวรรณ คูสกุลรัตน์';
+$config['boss_position'] = 'หัวหน้ากลุ่มงานพัฒนาคุณภาพและรูปแบบบริการ';
 //$config['base_url'] = 'http://'.$_SERVER['SERVER_NAME'].'/e_office';
 
 /*
