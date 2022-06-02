@@ -4,13 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class News extends CI_Controller
 {
     public $user_id;
+    public $group;
 
     public function __construct()
     {
         parent::__construct();
-
-
         $this->load->model('News_model', 'crud');
+        $this->group = $this->config->item('group_id');
     }
 
     public function index()
@@ -36,7 +36,7 @@ class News extends CI_Controller
 
     function fetch_news()
     {
-        $fetch_data = $this->crud->make_datatables();
+        $fetch_data = $this->crud->make_datatables('',$this->group);
         $data = array();
         $txt_view = '';
 
@@ -68,8 +68,8 @@ class News extends CI_Controller
         }
         $output = array(
             "draw" => intval($_POST["draw"]),
-            "recordsTotal" => $this->crud->get_all_data(),
-            "recordsFiltered" => $this->crud->get_filtered_data(),
+            "recordsTotal" => $this->crud->get_all_data($this->group),
+            "recordsFiltered" => $this->crud->get_filtered_data($this->group),
             "data" => $data
         );
         echo json_encode($output);
@@ -133,14 +133,14 @@ class News extends CI_Controller
     {
         $data = $this->input->post('items');
         if ($data['action'] == 'insert') {
-            $rs = $this->crud->save_news($data);
+            $rs = $this->crud->save_news($data,$this->group);
             if ($rs) {
                 $json = '{"success": true,"id":' . $rs . '}';
             } else {
                 $json = '{"success": false}';
             }
         } else if ($data['action'] == 'update') {
-            $rs = $this->crud->update_news($data);
+            $rs = $this->crud->update_news($data,$this->group);
             if ($rs) {
                 $json = '{"success": true}';
             } else {

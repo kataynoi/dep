@@ -22,23 +22,10 @@ $office = $this->db->get('chospital')->result_array();
                         <a href="<?php echo site_url('base_data/boss') ?>"><i class="fa fa-bus fa-fw"></i>
                             ผู้บริหารหน่วยงาน</a>
                     </li>
-
-                    <li>
-                        <a href="<?php echo site_url('base_data/policy') ?>"><i class="fas fa-chart-line"></i> นโยบายผู้บริหาร</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo site_url('base_data/vision') ?>"><i class="fas fa-chart-line"></i> วิสัยทัศน์ พันธกิจ ค่านิยม</a>
-                    </li>
                     <li>
                         <a href="<?php echo site_url('base_data/structure') ?>"><i class="fas fa-chart-line"></i>
                             โครงส้รางหน่วยงาน </a>
                     </li>
-                    <li>
-                        <a href="<?php echo site_url('base_data/authority') ?>"><i class="fas fa-chart-line"></i> อำนาจหน้าที่ </a>
-                    </li>
-
-
-
                 </ul>
             </div>
         </div>

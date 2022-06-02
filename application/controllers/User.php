@@ -5,6 +5,7 @@ class User extends CI_Controller
 {
 	public  $user_id ;
 	public  $provcode ;
+	public $group;
 	public function __construct()
 	{
 		parent::__construct();
@@ -15,6 +16,7 @@ class User extends CI_Controller
 		//$this->layout->setLeft('layout/left_user');
 		$this->user_id = $this->session->userdata('id');
 		$this->provcode='44';
+		$this->group = $this->config->item('group_id');
 	}
 
 	public function index()
@@ -99,7 +101,7 @@ class User extends CI_Controller
 	{
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
-		$rs = $this->user->do_auth($username, $password);
+		$rs = $this->user->do_auth($username, $password,$this->group);
 		//echo $rs['id'];
 		if ($rs['id']) {
 			$rs['login'] = true;

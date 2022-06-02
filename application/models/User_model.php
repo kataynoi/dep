@@ -22,11 +22,12 @@ class User_model extends CI_Model
         return $rs ;
 
     }
-     function do_auth($username, $password)
+     function do_auth($username, $password,$group)
     {
         $rs = $this->db
             ->select('id,name,email,user_type')
             ->where('username', $username)
+            ->where('group', $group)
             ->where('password', "PASSWORD('$password')", false)
             ->get('users')
             ->row_array();

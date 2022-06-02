@@ -78,7 +78,7 @@
     <div class='col col-lg-12'>
         <div class="panel  panel-default">
             <div class="panel-heading w3-theme-l1">
-                ข่าวจัดซื้อจัดจ้าง
+            เอกสารวิชาการคู่มือ
             </div>
             <div class="panel-body">
                 <div class="row">
@@ -112,7 +112,7 @@
     <div class='col col-lg-12'>
         <div class="panel  panel-default">
             <div class="panel-heading w3-theme-l1">
-                เอกสารวิชาการคู่มือ
+            เอกสารดาวน์โหลด/แบบฟอร์ม
             </div>
             <div class="panel-body">
                 <div class="row">
@@ -147,7 +147,7 @@
     <div class='col col-lg-12'>
         <div class="panel panel-default ">
             <div class="panel-heading w3-theme-l2">
-                การประเมินคุณธรรมและความโปร่งใสในการดำเนินงานของหน่วยงานภาครัฐ (Integrity & Transparency Assessment : ITA) ปีงบประมาณ
+                ตัวชี้วัดสำคัญ ปีงบประมาณ
                 <?php
                 echo $this->session->userdata('n_year');
                 ?>

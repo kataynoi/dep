@@ -12,9 +12,10 @@ class News_model extends CI_Model
     var $table = "news";
     var $order_column = Array('id', 'topic', 'detail', 'date_sent', 'user_id', 'cat_id', 'read', 'files',);
 
-    function make_query($id)
+    function make_query($id,$group)
     {
         $this->db->from($this->table);
+        $this->db->where('group', $group);
         if (isset($_POST["search"]["value"])) {
             $this->db->group_start();
             $this->db->like("topic", $_POST["search"]["value"]);
@@ -32,9 +33,9 @@ class News_model extends CI_Model
         }
     }
 
-    function make_datatables($id='')
+    function make_datatables($id='',$group)
     {
-        $this->make_query($id);
+        $this->make_query($id,$group);
         if ($_POST["length"] != -1) {
             $this->db->limit($_POST['length'], $_POST['start']);
         }
@@ -42,16 +43,17 @@ class News_model extends CI_Model
         return $query->result();
     }
 
-    function get_filtered_data()
+    function get_filtered_data($group)
     {
-        $this->make_query('');
+        $this->make_query('',$group);
         $query = $this->db->get();
         return $query->num_rows();
     }
 
-    function get_all_data()
+    function get_all_data($group)
     {
         $this->db->select("*");
+        $this->db->where('group',$group);
         $this->db->from($this->table);
         return $this->db->count_all_results();
     }
@@ -100,13 +102,14 @@ class News_model extends CI_Model
         return $rs ? $rs->name : "";
     }
 
-    public function save_news($data)
+    public function save_news($data,$group)
     {
 
         $rs = $this->db
             ->set("id", $data["id"])
             ->set("topic", $data["topic"])
             ->set("detail", $data["detail"])
+            ->set("group", $group)
             ->set("date_sent", date("Y-m-d"))
             ->set("user_id", $this->session->userdata('id'))
             ->set("cat_id", $data["cat_id"])
@@ -118,12 +121,13 @@ class News_model extends CI_Model
 
     }
 
-    public function update_news($data)
+    public function update_news($data,$group)
     {
         $rs = $this->db
             //->set("id", $data["id"])
             ->set("topic", $data["topic"])
             ->set("detail", $data["detail"])
+            ->set("group", $group)
             ->set("user_id", $this->session->userdata('id'))
             ->set("cat_id", $data["cat_id"])
             ->set("file", $data["file"])
