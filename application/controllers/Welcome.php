@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller
 {
+    public $group;
 
     public function __construct()
     {
@@ -11,14 +12,16 @@ class Welcome extends CI_Controller
         $this->db = $this->load->database('default', true);
         $this->load->model('Basic_model', 'crud');
         $this->load->model('Dashboard_model', 'dash');
+        $this->group = $this->config->item('group_id');
     }
 
     public function index()
     {
         //$data['all_employee'] = $this->db->from('employee')->where('active',1)->count_all_results();
-        $data['news1'] = $rs = $this->dash->get_news(1);
-        $data['news2'] = $rs = $this->dash->get_news(2);
-        $data['news3'] = $rs = $this->dash->get_news(3);
+        
+        $data['news1'] = $rs = $this->dash->get_news(1,$this->group);
+        $data['news2'] = $rs = $this->dash->get_news(2,$this->group);
+        $data['news3'] = $rs = $this->dash->get_news(3,$this->group);
         $boss = $this->crud->get_boss();
         $this->session->set_userdata($boss);
         $this->layout->view('dashboard/index_view', $data);

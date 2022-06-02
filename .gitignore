@@ -13,10 +13,14 @@ application/models/Create_crud_model.php
 application/models/Create_report_model.php
 application/views/create_crud
 application/views/create_report
+application/views/default_layout.php
 application/views/layout/left_crud.php
 application/views/crud_layout.php
 assets/apps/js/create_crud.js
 assets/apps/js/create_report.js
+/assets/images/banner/*
+/assets/images/users/*
+/assets/images/*
 /assets/uploads/*
 
 info.php

@@ -25,10 +25,11 @@ class Dashboard_model extends CI_Model
             ->result();
         return $rs;
     }
-    public function get_news($id)
+    public function get_news($id,$group)
     {
         $rs = $this->db
             ->where('cat_id',$id)
+            ->where('group',$group)
             ->limit(5)
             ->order_by('date_sent','DESC')
             ->get("news")
