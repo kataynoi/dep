@@ -4,15 +4,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Admin extends CI_Controller
 {
     public $user_id;
+    public $group;
     public function __construct()
     {
         parent::__construct();
+        $this->group = $this->config->item('group_id');
 
-        if ($this->session->userdata("user_type")!=1)
+        if ($this->session->userdata("user_type")!=1 && $this->group != $this->session->userdata("group"))
                     redirect(site_url('user/login'));
         $this->layout->setLeft('layout/left_admin');
         $this->layout->setLayout('admin_layout');
         $this->load->model('Admin_model', 'crud');
+       
     }
 
     public function index()

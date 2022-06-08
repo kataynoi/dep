@@ -22,6 +22,7 @@ class Welcome extends CI_Controller
         $data['news1'] = $rs = $this->dash->get_news(1,$this->group);
         $data['news2'] = $rs = $this->dash->get_news(2,$this->group);
         $data['news3'] = $rs = $this->dash->get_news(3,$this->group);
+        $data['news3'] = $rs = $this->dash->get_news(4,$this->group);
         $boss = $this->crud->get_boss();
         $this->session->set_userdata($boss);
         $this->layout->view('dashboard/index_view', $data);
@@ -32,7 +33,7 @@ class Welcome extends CI_Controller
     }
     public function get_ita(){
         $year=$this->input->post('year');
-        $rs = $this->dash->get_ita_ebit($year);
+        $rs = $this->dash->get_ita_ebit($year,$this->group);
 
 
         $arr_result = array();

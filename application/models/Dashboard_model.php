@@ -9,10 +9,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class Dashboard_model extends CI_Model
 {
-    public function get_ita_ebit($year)
+    public function get_ita_ebit($year,$group)
     {
         $rs = $this->db
             ->where('n_year',$year)
+            ->where('group',$group)
             ->get("ita_ebit")
             ->result();
         return $rs;
@@ -21,6 +22,7 @@ class Dashboard_model extends CI_Model
     {
         $rs = $this->db
             ->where('ita_ebit',$id)
+            //->where('group',$group)
             ->get("ita_ebit_items")
             ->result();
         return $rs;
