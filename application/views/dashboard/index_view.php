@@ -156,7 +156,7 @@
                 <table class=" table table-responsive" id="tbl_ita">
                     <thead>
                         <th>#</th>
-                        <th>EBIT</th>
+                        <th>กลุ่มตัวชี้วัด</th>
                         <th>items</th>
                     </thead>
                     <tbody>

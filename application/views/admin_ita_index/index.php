@@ -41,7 +41,7 @@
 
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">เพิ่มดัชนี ITA</h4>
+                <h4 class="modal-title">เพิ่มประเภทตัวชี้วัด</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 

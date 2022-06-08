@@ -14,9 +14,10 @@ class Admin_ita_ebit_items_model extends CI_Model
     
 
 
-    function make_query()
+    function make_query($id,$group)
     {
         $this->db->from($this->table);
+        $this->db->where('group', $group);
         if (isset($_POST["search"]["value"])) {
             $this->db->group_start();
             $this->db->like("ita_ebit", $_POST["search"]["value"]);
@@ -31,9 +32,9 @@ class Admin_ita_ebit_items_model extends CI_Model
         }
     }
 
-    function make_datatables()
+    function make_datatables($id='',$group)
     {
-        $this->make_query();
+        $this->make_query($id,$group);
         if ($_POST["length"] != -1) {
             $this->db->limit($_POST['length'], $_POST['start']);
         }
@@ -41,16 +42,17 @@ class Admin_ita_ebit_items_model extends CI_Model
         return $query->result();
     }
 
-    function get_filtered_data()
+    function get_filtered_data($group)
     {
-        $this->make_query();
+        $this->make_query('',$group);
         $query = $this->db->where('n_year', $this->session->userdata('n_year'))->get();
         return $query->num_rows();
     }
 
-    function get_all_data()
+    function get_all_data($group)
     {
         $this->db->select("*")->where('n_year', $this->session->userdata('n_year'));
+        $this->db->where('group',$group);
         $this->db->from($this->table);
         return $this->db->count_all_results();
     }
@@ -83,19 +85,32 @@ class Admin_ita_ebit_items_model extends CI_Model
         return $rs ? $rs->name : "";
     }
 
-    public function save_Admin_ita_ebit_items($data)
+    public function save_Admin_ita_ebit_items($data,$group)
     {
 
         $rs = $this->db
-            ->set("id", $data["id"])->set("name", $data["name"])->set("ita_ebit", $data["ita_ebit"])->set("n_year", $data["n_year"])->set("link", $data["link"])->set("file", $data["file"])
+            ->set("id", $data["id"])
+            ->set("group", $group)
+            ->set("name", $data["name"])
+            ->set("ita_ebit", $data["ita_ebit"])
+            ->set("n_year", $data["n_year"])
+            ->set("link", $data["link"])
+            ->set("file", $data["file"])
             ->insert('ita_ebit_items');
 
         return $this->db->insert_id();
     }
-    public function update_Admin_ita_ebit_items($data)
+    public function update_Admin_ita_ebit_items($data,$group)
     {
         $rs = $this->db
-            ->set("id", $data["id"])->set("name", $data["name"])->set("ita_ebit", $data["ita_ebit"])->set("n_year", $data["n_year"])->set("link", $data["link"])->set("file", $data["file"])->where("id", $data["id"])
+            ->set("id", $data["id"])
+            ->set("name", $data["name"])
+            ->set("ita_ebit", $data["ita_ebit"])
+            ->set("n_year", $data["n_year"])
+            ->set("link", $data["link"])
+            ->set("file", $data["file"])
+            ->where("id", $data["id"])
+            ->set("group", $group)
             ->update('ita_ebit_items');
 
         return $rs;

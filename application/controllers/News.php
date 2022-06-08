@@ -109,8 +109,8 @@ class News extends CI_Controller
         }
         $output = array(
             "draw" => intval($_POST["draw"]),
-            "recordsTotal" => $this->crud->get_all_data(),
-            "recordsFiltered" => $this->crud->get_filtered_data(),
+            "recordsTotal" => $this->crud->get_all_data($this->group),
+            "recordsFiltered" => $this->crud->get_filtered_data($this->group),
             "data" => $data
         );
         echo json_encode($output);

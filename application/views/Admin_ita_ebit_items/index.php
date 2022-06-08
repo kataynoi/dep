@@ -22,8 +22,8 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>ชื่อ EBIT</th>
-                    <th>Ebit</th>
+                    <th>ชื่อตัวชี้วัด</th>
+                    <th>กลุ่มตัวชี้วัด</th>
                     <th>ปีงบประมาณ</th>
                     <th>Link</th>
                     <th>ไฟล์</th>
@@ -45,7 +45,7 @@
 
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">เพิ่มรายการ Ebit <?php echo $this->session->userdata('n_year');?></h4>
+                <h4 class="modal-title">เพิ่มรายการตัวชี้วัด <?php echo $this->session->userdata('n_year');?></h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
@@ -59,10 +59,10 @@
 
                     <input type="hidden" class="form-control" id="id" placeholder="ID" value="">
                 <div class="form-group">
-                    <label for="name">ชื่อ EBIT</label>
-                    <input type="text" class="form-control" id="name" placeholder="ชื่อ EBIT" value=""></div>
+                    <label for="name">ชื่อตัวชี้วัด</label>
+                    <input type="text" class="form-control" id="name" placeholder="ชื่อ ตัวชี้วัด" value=""></div>
                 <div class="form-group">
-                    <label for="ita_ebit">Ebit</label>
+                    <label for="ita_ebit">กลุ่มตัวชี้วัด</label>
                     <select class="form-control" id="ita_ebit" placeholder="Ebit" value="">
                         <option>-------</option>
                         <?php

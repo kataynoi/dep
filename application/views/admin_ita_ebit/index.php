@@ -23,8 +23,8 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>ชื่อ EBIT</th>
-                            <th>ดัชนี</th>
+                            <th>ประเภทตัวชี้วัด</th>
+                            <th>ชื่อกลุ่มตัวชี้วัด</th>
                             <th>ปีงบประมาณ</th>
                             <th>#</th>
                         </tr>
@@ -44,7 +44,7 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">เพิ่มITA EBIT</h4>
+                    <h4 class="modal-title">เพิ่มกลุ่มตัวชี้วัด</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
@@ -56,11 +56,11 @@
                     <input type="hidden" class="form-control" id="id" placeholder="ID" value="">
 
                     <div class="form-group">
-                        <label for="name">ชื่อ EBIT</label>
-                        <input type="text" class="form-control" id="name" placeholder="ชื่อ EBIT" value="">
+                        <label for="name">ชื่อกลุ่มตัวชี้วัด</label>
+                        <input type="text" class="form-control" id="name" placeholder="ชื่อตัวชี้วัด" value="">
                     </div>
                     <div class="form-group">
-                        <label for="ita_index">ดัชนี</label>
+                        <label for="ita_index">ประเภทตัวชี้วัด</label>
                         <select class="form-control" id="ita_index" placeholder="ดัชนี">
                             <option>-------</option>
                             <?php
@@ -94,14 +94,3 @@
 
 
         <script src="<?php echo base_url() ?>assets/apps/js/admin_ita_ebit.js" charset="utf-8"></script>
-
-        <!--         foreach ($invit_type as $r) {
-                                    if ($outsite["invit_type"] == $r->id) {
-                                        $s = "selected";
-                                    } else {
-                                        $s = "";
-                                    }
-                                    echo "<option value=" $r->id" $s > $r->name </option>";
-
-    }
-    -->
