@@ -53,15 +53,11 @@
                         $line = 0;
                         foreach ($news1 as $row) {
                             $line++;
-                            echo '<div class="row" style="">
-                                <div class=" col-md-1 text-center " style="margin-left: 50px;color: white;background-image: url(assets/img/topic_bg.png); background-repeat: no-repeat;background-position: center;position: relative;height: 100px;">
-                                <span class="highlight2">'
-                                . substr(to_thai_date_short($row->date_sent), 0, -5) . '</span></div>
-                                <div class="col-md-10 pull-right topic " style="height:60px;">
-                                <a href="' . site_url('news/news_detail/') . $row->id . '">
-                                            ' . $row->topic . '
-                                            </a>
-                                            </div>
+                            echo '<div class="row" style="margin-left: 20px;">
+                                <div class="col-md-10 topic">
+                                <button type="button" class="btn w3-theme-d1"><i class="fa fa-book" aria-hidden="true"></i>
+                                </button><a href="' . site_url('news/news_detail/') . $row->id . '">
+                                            ' . $row->topic . '</a></div>
                                 <div class="col-xs-6 col-md-10 pull-right" style="border">
                                     <i class="fa fa-eye" aria-hidden="true"> &nbsp;</i><span >' . $row->read . ' view</span>&nbsp;&nbsp;&nbsp;
                                     <i class="fa fa-calendar" aria-hidden="true"> </i><span > ' . to_thai_date_short($row->date_sent) . '</span>
@@ -78,24 +74,20 @@
     <div class='col col-lg-12'>
         <div class="panel  panel-default">
             <div class="panel-heading w3-theme-l1">
-            เอกสารวิชาการคู่มือ
+                เอกสารวิชาการคู่มือ
             </div>
             <div class="panel-body">
-                <div class="row">
+            <div class="row">
                     <tbody>
                         <?php
                         $line = 0;
                         foreach ($news2 as $row) {
                             $line++;
-                            echo '<div class="row" style="">
-                                <div class=" col-md-1 text-center " style="margin-left: 50px;color: white;background-image: url(assets/img/topic_bg.png); background-repeat: no-repeat;background-position: center;position: relative;height: 100px;">
-                                <span class="highlight2">'
-                                . substr(to_thai_date_short($row->date_sent), 0, -5) . '</span></div>
-                                <div class="col-md-10 pull-right topic " style="height:60px;">
-                                <a href="' . site_url('news/news_detail/') . $row->id . '">
-                                            ' . $row->topic . '
-                                            </a>
-                                            </div>
+                            echo '<div class="row" style="margin-left: 20px;">
+                                <div class="col-md-10 topic">
+                                <button type="button" class="btn w3-theme-d1"><i class="fa fa-book" aria-hidden="true"></i>
+                                </button><a href="' . site_url('news/news_detail/') . $row->id . '">
+                                            ' . $row->topic . '</a></div>
                                 <div class="col-xs-6 col-md-10 pull-right" style="border">
                                     <i class="fa fa-eye" aria-hidden="true"> &nbsp;</i><span >' . $row->read . ' view</span>&nbsp;&nbsp;&nbsp;
                                     <i class="fa fa-calendar" aria-hidden="true"> </i><span > ' . to_thai_date_short($row->date_sent) . '</span>
@@ -111,25 +103,52 @@
     </div>
     <div class='col col-lg-12'>
         <div class="panel  panel-default">
-            <div class="panel-heading w3-theme-l1">
-            เอกสารดาวน์โหลด/แบบฟอร์ม
+            <div class="panel-heading w3-theme-l2">
+                เอกสารดาวน์โหลด/แบบฟอร์ม
             </div>
             <div class="panel-body">
-                <div class="row">
+            <div class="row">
                     <tbody>
                         <?php
                         $line = 0;
                         foreach ($news3 as $row) {
                             $line++;
-                            echo '<div class="row" style="">
-                                <div class=" col-md-1 text-center " style="margin-left: 50px;color: white;background-image: url(assets/img/topic_bg.png); background-repeat: no-repeat;background-position: center;position: relative;height: 100px;">
-                                <span class="highlight2">'
-                                . substr(to_thai_date_short($row->date_sent), 0, -5) . '</span></div>
-                                <div class="col-md-10 pull-right topic " style="height:60px;">
-                                <a href="' . site_url('news/news_detail/') . $row->id . '">
-                                            ' . $row->topic . '
-                                            </a>
-                                            </div>
+                            echo '<div class="row" style="margin-left: 20px;">
+                                <div class="col-md-10 topic">
+                                <button type="button" class="btn w3-theme-d2"><i class="fa fa-book" aria-hidden="true"></i>
+                                </button><a href="' . site_url('news/news_detail/') . $row->id . '">
+                                            ' . $row->topic . '</a></div>
+                                <div class="col-xs-6 col-md-10 pull-right" style="border">
+                                    <i class="fa fa-eye" aria-hidden="true"> &nbsp;</i><span >' . $row->read . ' view</span>&nbsp;&nbsp;&nbsp;
+                                    <i class="fa fa-calendar" aria-hidden="true"> </i><span > ' . to_thai_date_short($row->date_sent) . '</span>
+                                    <span class="pull-right w3-text-color" style="padding-right:30px;" ><i class="fa fa-user" aria-hidden="true"> </i> ' . get_user_name($row->user_id) . '</span>
+                                </div>
+                            </div> <hr class="hr_news1">';
+                        }
+                        ?>
+                    </tbody>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class='col col-lg-12'>
+        <div class="panel  panel-default">
+            <div class="panel-heading w3-theme-l2">
+                กฎหมาย/ระเบียบข้องบังคับ
+            </div>
+            <div class="panel-body">
+            <div class="row">
+                    <tbody>
+                        <?php
+                        $line = 0;
+                        foreach ($news4 as $row) {
+                            $line++;
+                            echo '<div class="row" style="margin-left: 20px;">
+                                <div class="col-md-10 topic">
+                                <button type="button" class="btn w3-theme-d2"><i class="fa fa-book" aria-hidden="true"></i>
+                                </button><a href="' . site_url('news/news_detail/') . $row->id . '">
+                                            ' . $row->topic . '</a></div>
                                 <div class="col-xs-6 col-md-10 pull-right" style="border">
                                     <i class="fa fa-eye" aria-hidden="true"> &nbsp;</i><span >' . $row->read . ' view</span>&nbsp;&nbsp;&nbsp;
                                     <i class="fa fa-calendar" aria-hidden="true"> </i><span > ' . to_thai_date_short($row->date_sent) . '</span>
@@ -146,7 +165,7 @@
 
     <div class='col col-lg-12'>
         <div class="panel panel-default ">
-            <div class="panel-heading w3-theme-l2">
+            <div class="panel-heading w3-theme-d3">
                 ตัวชี้วัดสำคัญ ปีงบประมาณ
                 <?php
                 echo $this->session->userdata('n_year');
@@ -169,7 +188,7 @@
     </div>
     <div class='col col-lg-12'>
         <div class="panel  panel-default">
-            <div class="panel-heading w3-theme-l3">
+            <div class="panel-heading w3-theme-d3">
                 ผลการดำเนินงาน
             </div>
             <div class="panel-body">
