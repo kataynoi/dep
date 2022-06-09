@@ -32,7 +32,7 @@ class Dashboard_model extends CI_Model
         $rs = $this->db
             ->where('cat_id',$id)
             ->where('group',$group)
-            ->limit(5)
+            ->limit(10)
             ->order_by('date_sent','DESC')
             ->get("news")
             ->result();
