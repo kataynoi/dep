@@ -12,15 +12,10 @@ class Admin_link_model extends CI_Model
     var $table = "link";
     var $order_column = Array('id','id','name','link',);
 
-    function make_query()
+    function make_query($group)
     {
         $this->db->from($this->table);
-        if (isset($_POST["search"]["value"])) {
-            $this->db->group_start();
-            $this->db->like("name", $_POST["search"]["value"]);
-            $this->db->group_end();
-
-        }
+        $this->db->where('group',$group);
 
         if (isset($_POST["order"])) {
             $this->db->order_by($this->order_column[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
@@ -29,9 +24,9 @@ class Admin_link_model extends CI_Model
         }
     }
 
-    function make_datatables()
+    function make_datatables($group)
     {
-        $this->make_query();
+        $this->make_query($group);
         if ($_POST["length"] != -1) {
             $this->db->limit($_POST['length'], $_POST['start']);
         }
@@ -39,16 +34,17 @@ class Admin_link_model extends CI_Model
         return $query->result();
     }
 
-    function get_filtered_data()
+    function get_filtered_data($group)
     {
-        $this->make_query();
+        $this->make_query($group);
         $query = $this->db->get();
         return $query->num_rows();
     }
 
-    function get_all_data()
+    function get_all_data($group)
     {
         $this->db->select("*");
+        $this->db->where('group',$group);
         $this->db->from($this->table);
         return $this->db->count_all_results();
     }
@@ -65,20 +61,27 @@ class Admin_link_model extends CI_Model
 
         
 
-    public function save_admin_link($data)
+    public function save_admin_link($data,$group)
             {
 
                 $rs = $this->db
-                    ->set("id", $data["id"])->set("name", $data["name"])->set("link", $data["link"])
+                    ->set("id", $data["id"])
+                    ->set("name", $data["name"])
+                    ->set("link", $data["link"])
+                    ->set("group", $group)
                     ->insert('link');
 
                 return $this->db->insert_id();
 
             }
-    public function update_admin_link($data)
+    public function update_admin_link($data,$group)
             {
                 $rs = $this->db
-                    ->set("id", $data["id"])->set("name", $data["name"])->set("link", $data["link"])->where("id",$data["id"])
+                    ->set("id", $data["id"])
+                    ->set("name", $data["name"])
+                    ->set("link", $data["link"])
+                    ->set("group", $group)
+                    ->where("id",$data["id"])
                     ->update('link');
 
                 return $rs;

@@ -1,5 +1,9 @@
 <?php
-$link = $this->db->get('link')->result();
+$group = $this->config->item('group_id');
+$link = $this->db
+    ->where('group', $group)
+    ->get('link')
+    ->result();
 ?>
 
 <div class="fixed-bottom" style="
@@ -14,7 +18,7 @@ $link = $this->db->get('link')->result();
     <div class="row">
         <?php
         foreach ($link as $l) {
-            echo "<div class='col-md-3 '><a href='".$l->link."' target='_blank'>" . $l->name . "</div>";
+            echo "<div class='col-md-3 '><a href='" . $l->link . "' target='_blank'>" . $l->name . "</div>";
         }
 
         ?>
