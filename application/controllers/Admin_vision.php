@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Admin_vision extends CI_Controller
 {
     public $user_id;
+    public $group;
 
     public function __construct()
     {
@@ -14,6 +15,7 @@ class Admin_vision extends CI_Controller
         $this->layout->setLeft("layout/left_admin");
         $this->layout->setLayout("admin_layout");
         $this->load->model('Admin_vision_model', 'crud');
+        $this->group = $this->config->item('group_id');
     }
 
     public function index()
@@ -26,7 +28,7 @@ class Admin_vision extends CI_Controller
 
     function fetch_admin_vision()
     {
-        $fetch_data = $this->crud->make_datatables();
+        $fetch_data = $this->crud->make_datatables($this->group);
         $data = array();
         foreach ($fetch_data as $row) {
 
@@ -42,8 +44,8 @@ class Admin_vision extends CI_Controller
         }
         $output = array(
             "draw" => intval($_POST["draw"]),
-            "recordsTotal" => $this->crud->get_all_data(),
-            "recordsFiltered" => $this->crud->get_filtered_data(),
+            "recordsTotal" => $this->crud->get_all_data($this->group),
+            "recordsFiltered" => $this->crud->get_filtered_data($this->group),
             "data" => $data
         );
         echo json_encode($output);
@@ -67,14 +69,14 @@ class Admin_vision extends CI_Controller
     {
         $data = $this->input->post('items');
         if ($data['action'] == 'insert') {
-            $rs = $this->crud->save_admin_vision($data);
+            $rs = $this->crud->save_admin_vision($data,$this->group);
             if ($rs) {
                 $json = '{"success": true,"id":' . $rs . '}';
             } else {
                 $json = '{"success": false}';
             }
         } else if ($data['action'] == 'update') {
-            $rs = $this->crud->update_admin_vision($data);
+            $rs = $this->crud->update_admin_vision($data,$this->group);
             if ($rs) {
                 $json = '{"success": true}';
             } else {
