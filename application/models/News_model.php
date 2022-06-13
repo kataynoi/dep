@@ -12,10 +12,13 @@ class News_model extends CI_Model
     var $table = "news";
     var $order_column = Array('id', 'topic', 'detail', 'date_sent', 'user_id', 'cat_id', 'read', 'files',);
 
-    function make_query($id,$group)
+    function make_query($cat_id,$group)
     {
         $this->db->from($this->table);
         $this->db->where('group', $group);
+        if($cat_id!=''){
+            $this->db->where('cat_id', $cat_id); 
+        }
         if (isset($_POST["search"]["value"])) {
             $this->db->group_start();
             $this->db->like("topic", $_POST["search"]["value"]);
@@ -33,7 +36,7 @@ class News_model extends CI_Model
         }
     }
 
-    function make_datatables($id='',$group)
+    function make_datatables($id,$group)
     {
         $this->make_query($id,$group);
         if ($_POST["length"] != -1) {

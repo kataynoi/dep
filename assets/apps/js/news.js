@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    var cat_id = $('#cat_id').val();
     var dataTable = $('#table_data').DataTable({
         'createdRow': function (row, data, dataIndex) {
             $(row).attr('name', 'row' + dataIndex);
@@ -7,11 +8,12 @@ $(document).ready(function () {
         "serverSide": true,
         "order": [],
 
-        "pageLength": 50,
+        "pageLength": 25,
         "ajax": {
-            url: site_url + '/news/fetch_news',
+            url: site_url + '/news/fetch_news/',
             data: {
-                'csrf_token': csrf_token
+                'csrf_token': csrf_token,
+                'cat_id' : cat_id
             },
             type: "POST"
         },

@@ -58,7 +58,7 @@
                                 <button type="button" class="btn w3-theme-d1"><i class="fa fa-book" aria-hidden="true"></i>
                                 </button><a href="' . site_url('news/news_detail/') . $row->id . '">
                                             ' . $row->topic . '</a></div>
-                                <div class="col-xs-6 col-md-10 pull-right" style="border">
+                                <div class="col-xs-6 col-md-10" style=" margin-left: 50px;">
                                     <i class="fa fa-eye" aria-hidden="true"> &nbsp;</i><span >' . $row->read . ' view</span>&nbsp;&nbsp;&nbsp;
                                     <i class="fa fa-calendar" aria-hidden="true"> </i><span > ' . to_thai_date_short($row->date_sent) . '</span>
                                     <span class="pull-right w3-text-color" style="padding-right:30px;" ><i class="fa fa-user" aria-hidden="true"> </i> ' . get_user_name($row->user_id) . '</span>
@@ -66,6 +66,7 @@
                             </div> <hr class="hr_news1">';
                         }
                         ?>
+                        <div class="pull-right w3-text-color" style="margin-right: 10px;"><a href="<?php echo site_url('news/index/1');?>">-- ดูทั้งหมด --</a></div>
                     </tbody>
                 </div>
             </div>
@@ -88,7 +89,7 @@
                                 <button type="button" class="btn w3-theme-d1"><i class="fa fa-book" aria-hidden="true"></i>
                                 </button><a href="' . site_url('news/news_detail/') . $row->id . '">
                                             ' . $row->topic . '</a></div>
-                                <div class="col-xs-6 col-md-10 pull-right" style="border">
+                                <div class="col-xs-6 col-md-10" style=" margin-left: 50px;">
                                     <i class="fa fa-eye" aria-hidden="true"> &nbsp;</i><span >' . $row->read . ' view</span>&nbsp;&nbsp;&nbsp;
                                     <i class="fa fa-calendar" aria-hidden="true"> </i><span > ' . to_thai_date_short($row->date_sent) . '</span>
                                     <span class="pull-right w3-text-color" style="padding-right:30px;" ><i class="fa fa-user" aria-hidden="true"> </i> ' . get_user_name($row->user_id) . '</span>
@@ -96,6 +97,8 @@
                             </div> <hr class="hr_news1">';
                         }
                         ?>
+                        <div class="pull-right w3-text-color" style="margin-right: 10px;"><a href="<?php echo site_url('news/index/2');?>">-- ดูทั้งหมด --</a></div>
+                    
                     </tbody>
                 </div>
             </div>
@@ -118,7 +121,7 @@
                                 <button type="button" class="btn w3-theme-d2"><i class="fa fa-book" aria-hidden="true"></i>
                                 </button><a href="' . site_url('news/news_detail/') . $row->id . '">
                                             ' . $row->topic . '</a></div>
-                                <div class="col-xs-6 col-md-10 pull-right" style="border">
+                                <div class="col-xs-6 col-md-10" style=" margin-left: 50px;">
                                     <i class="fa fa-eye" aria-hidden="true"> &nbsp;</i><span >' . $row->read . ' view</span>&nbsp;&nbsp;&nbsp;
                                     <i class="fa fa-calendar" aria-hidden="true"> </i><span > ' . to_thai_date_short($row->date_sent) . '</span>
                                     <span class="pull-right w3-text-color" style="padding-right:30px;" ><i class="fa fa-user" aria-hidden="true"> </i> ' . get_user_name($row->user_id) . '</span>
@@ -126,6 +129,8 @@
                             </div> <hr class="hr_news1">';
                         }
                         ?>
+                        <div class="pull-right w3-text-color" style="margin-right: 10px;"><a href="<?php echo site_url('news/index/3');?>">-- ดูทั้งหมด --</a></div>
+                    
                     </tbody>
                 </div>
             </div>
@@ -149,7 +154,7 @@
                                 <button type="button" class="btn w3-theme-d2"><i class="fa fa-book" aria-hidden="true"></i>
                                 </button><a href="' . site_url('news/news_detail/') . $row->id . '">
                                             ' . $row->topic . '</a></div>
-                                <div class="col-xs-6 col-md-10 pull-right" style="border">
+                                <div class="col-xs-6 col-md-10" style=" margin-left: 50px;">
                                     <i class="fa fa-eye" aria-hidden="true"> &nbsp;</i><span >' . $row->read . ' view</span>&nbsp;&nbsp;&nbsp;
                                     <i class="fa fa-calendar" aria-hidden="true"> </i><span > ' . to_thai_date_short($row->date_sent) . '</span>
                                     <span class="pull-right w3-text-color" style="padding-right:30px;" ><i class="fa fa-user" aria-hidden="true"> </i> ' . get_user_name($row->user_id) . '</span>
@@ -157,6 +162,7 @@
                             </div> <hr class="hr_news1">';
                         }
                         ?>
+                        <div class="pull-right w3-text-color" style="margin-right: 10px;"><a href="<?php echo site_url('news/index/4');?>">-- ดูทั้งหมด --</a></div>
                     </tbody>
                 </div>
             </div>

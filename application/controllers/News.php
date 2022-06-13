@@ -13,9 +13,10 @@ class News extends CI_Controller
         $this->group = $this->config->item('group_id');
     }
 
-    public function index()
+    public function index($cat_id='')
     {
         $data[] = '';
+        $data['cat_id'] =$cat_id;
         $data["users"] = $this->crud->get_users();
         $data["news_category"] = $this->crud->get_news_category();
         $this->layout->view('news/index', $data);
@@ -36,7 +37,8 @@ class News extends CI_Controller
 
     function fetch_news()
     {
-        $fetch_data = $this->crud->make_datatables('',$this->group);
+        $cat_id =  $this->input->post('cat_id');
+        $fetch_data = $this->crud->make_datatables($cat_id,$this->group);
         $data = array();
         $txt_view = '';
 
@@ -47,16 +49,15 @@ class News extends CI_Controller
                       <button class="btn btn-danger btn-outline pull-right" data-btn="btn_del" data-id="' . $row->id . '" ><i class="fa fa-trash-alt " aria-hidden="true"> </i></button>';
             }
             $sub_array = array();
-            $txt_view = '    <div class="row" style="">
-                                <div class="col-xs-12 col-md-1 text-center" style="color: white;background-image: url(../assets/img/topic_bg.png); background-repeat: no-repeat;background-position: center;position: relative;height: 100px;">
-                                <span class="highlight">'
-                . substr(to_thai_date_short($row->date_sent), 0, -5) . '</span></div>
-                                <div class="col-xs-6 col-md-10 pull-right topic" style="height:80px;">
-                     <a href="'.site_url('news/news_detail/').$row->id.'">
+            $txt_view = '    <div class="row" style="margin-left: 20px;">
+                                <div class="col-xs-6 col-md-10  topic">
+                                <button type="button" class="btn w3-theme-d2"><i class="fa fa-book" aria-hidden="true"></i>
+                                </button>
+                                    <a href="'.site_url('news/news_detail/').$row->id.'">
                                             ' . $row->topic . '
                                             </a>
                                             </div>
-                                <div class="col-xs-6 col-md-10 pull-right" style="">
+                                            <div class="col-xs-6 col-md-10" style=" margin-left: 50px;">
                                     <i class="fa fa-eye" aria-hidden="true"> &nbsp;</i><span >' . $row->read . ' view</span>&nbsp;&nbsp;&nbsp;
                                     <i class="fa fa-calendar" aria-hidden="true"> </i><span > ' . to_thai_date_short($row->date_sent) . '</span>
                                     ' . $del_news . '
