@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var cat_id = $('#cat_id').val();
+    var cat_id = $('#cat_id_hidden').val();
     var dataTable = $('#table_data').DataTable({
         'createdRow': function (row, data, dataIndex) {
             $(row).attr('name', 'row' + dataIndex);

@@ -46,7 +46,7 @@
                 </span>
 
             </div>
-            <input type="hidden" id="cat_id" value="<?php echo $cat_id; ?>">
+            <input type="hidden" id="cat_id_hidden" value="<?php echo $cat_id; ?>">
             <div class="panel-body">
 
                 <table id="table_data" class="table table-borderless">
