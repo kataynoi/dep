@@ -31,7 +31,7 @@ class User_model extends CI_Model
             ->where('password', "PASSWORD('$password')", false)
             ->get('users')
             ->row_array();
-        //echo $this->db->last_query();
+       // echo $this->db->last_query();
         return $rs;
     }
     public function get_userprofile($id){

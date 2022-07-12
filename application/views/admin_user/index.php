@@ -54,8 +54,7 @@
                 <input type="hidden" id="action" value="insert">
 
                 <div class="form-group">
-                    <label for="id">ID</label>
-                    <input type="text" class="form-control" id="id" placeholder="ID" value=""></div>
+                    <input type="hidden" class="form-control" id="id" placeholder="ID" value=""></div>
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" class="form-control" id="username" placeholder="Username" value=""></div>
@@ -79,7 +78,7 @@
                     <input type="text" class="form-control" id="email" placeholder="E-mail" value=""></div>
                 <div class="form-group">
                     <label for="active">สถานะผู้ใช้</label>
-                    <input type="text" class="form-control" id="active" placeholder="สถานะผู้ใช้" value=""></div>
+                    <input type="text" class="form-control" id="active" placeholder="สถานะผู้ใช้" value="1"></div>
             </div>
 
             <!-- Modal footer -->

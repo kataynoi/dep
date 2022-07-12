@@ -12,9 +12,10 @@ class Admin_user_model extends CI_Model
     var $table = "users";
     var $order_column = Array('id', 'username', 'password', 'name', 'user_type', 'email', 'active',);
 
-    function make_query()
+    function make_query($group)
     {
         $this->db->from($this->table);
+        $this->db->where('group', $group);
         if (isset($_POST["search"]["value"])) {
             $this->db->group_start();
             $this->db->like("username", $_POST["search"]["value"]);
@@ -30,9 +31,9 @@ class Admin_user_model extends CI_Model
         }
     }
 
-    function make_datatables()
+    function make_datatables($group)
     {
-        $this->make_query();
+        $this->make_query($group);
         if ($_POST["length"] != -1) {
             $this->db->limit($_POST['length'], $_POST['start']);
         }
@@ -40,16 +41,18 @@ class Admin_user_model extends CI_Model
         return $query->result();
     }
 
-    function get_filtered_data()
+    function get_filtered_data($group)
     {
-        $this->make_query();
+        $this->make_query($group);
+        
         $query = $this->db->get();
         return $query->num_rows();
     }
 
-    function get_all_data()
+    function get_all_data($group)
     {
         $this->db->select("*");
+        $this->db->where('group', $group);
         $this->db->from($this->table);
         return $this->db->count_all_results();
     }
@@ -81,7 +84,7 @@ class Admin_user_model extends CI_Model
         return $rs ? $rs->name : "";
     }
 
-    public function save_admin_user($data)
+    public function save_admin_user($data,$group)
     {
         if($data['password'] !=''){
             $this->db->set('password', "PASSWORD('".$data['password']."')", false);
@@ -90,6 +93,7 @@ class Admin_user_model extends CI_Model
             ->set("id", $data["id"])
             ->set("username", $data["username"])
             ->set("name", $data["name"])
+            ->set("group", $group)
             ->set("user_type", $data["user_type"])
             ->set("email", $data["email"])
             ->set("active", $data["active"])

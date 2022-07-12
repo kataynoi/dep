@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Admin_user extends CI_Controller
 {
     public $user_id;
-
+    public $group;
     public function __construct()
     {
         parent::__construct();
@@ -13,6 +13,7 @@ class Admin_user extends CI_Controller
         $this->layout->setLeft('layout/left_admin');
         $this->layout->setLayout('admin_layout');
         $this->load->model('Admin_user_model', 'crud');
+        $this->group = $this->config->item('group_id');
     }
 
     public function index()
@@ -25,7 +26,7 @@ class Admin_user extends CI_Controller
 
     function fetch_admin_user()
     {
-        $fetch_data = $this->crud->make_datatables();
+        $fetch_data = $this->crud->make_datatables($this->group);
         $data = array();
         foreach ($fetch_data as $row) {
             $user_type_name = $this->crud->get_user_type_name($row->user_type);
@@ -43,8 +44,8 @@ class Admin_user extends CI_Controller
         }
         $output = array(
             "draw" => intval($_POST["draw"]),
-            "recordsTotal" => $this->crud->get_all_data(),
-            "recordsFiltered" => $this->crud->get_filtered_data(),
+            "recordsTotal" => $this->crud->get_all_data($this->group),
+            "recordsFiltered" => $this->crud->get_filtered_data($this->group),
             "data" => $data
         );
         echo json_encode($output);
@@ -68,7 +69,7 @@ class Admin_user extends CI_Controller
     {
         $data = $this->input->post('items');
         if ($data['action'] == 'insert') {
-            $rs = $this->crud->save_admin_user($data);
+            $rs = $this->crud->save_admin_user($data,$this->group);
         } else if ($data['action'] == 'update') {
             $rs = $this->crud->update_admin_user($data);
         }

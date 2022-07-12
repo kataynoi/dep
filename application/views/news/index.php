@@ -36,7 +36,7 @@
                         echo "";
                 }
 
-                if (check_role(1, $this->session->userdata('id'))) {
+                if ($this->session->userdata('user_type')<=2) {
                     echo '<button class="btn btn-success pull-right" id="add_data" data-toggle="modal" data-target="#frmModal"><i
                     class="fa fa-plus-circle"></i> Add
             </button>';
