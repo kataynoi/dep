@@ -19,7 +19,7 @@ class Upload extends CI_Controller
         $config['upload_path'] = './assets/images/';
         $config['allowed_types'] = 'gif|jpg|png';
         //$config['encrypt_name'] = TRUE;
-        $config['max_size'] = 10240;
+        $config['max_size'] = 100240;
         //$config['max_width']            = 1024;
         //$config['max_height']           = 768;
         $config['file_name'] = $this->session->userdata('id');
@@ -43,7 +43,7 @@ class Upload extends CI_Controller
         $config['upload_path'] = './assets/uploads/';
         $config['allowed_types'] = 'pdf|doc|docx|ppt|pptx|xls|xlsx|gif|jpg|png';
         //$config['encrypt_name'] = TRUE;
-        $config['max_size'] = 10240;
+        $config['max_size'] = 100240;
         //$config['max_width'] = 1024;
         //$config['max_height'] = 768;
 
